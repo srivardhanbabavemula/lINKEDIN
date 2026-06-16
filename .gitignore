@@ -1,0 +1,15 @@
+.env
+__pycache__/
+*.pyc
+.venv/
+venv/
+node_modules/
+database/linkedin.db
+database/*.db
+playwright/.auth/
+safety/activity.json
+output/
+reports/*.csv
+dashboard/nextjs-app/.next/
+dashboard/nextjs-app/node_modules/
+*.log

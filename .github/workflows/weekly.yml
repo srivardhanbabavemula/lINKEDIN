@@ -1,0 +1,43 @@
+name: Weekly Report (Safe — No LinkedIn Login)
+
+# SAFE GitHub Actions workflow:
+# - NO LinkedIn credentials
+# - NO Playwright scraping
+# - Only validates code + generates sample reports from seed data
+
+on:
+  schedule:
+    - cron: "0 9 * * 0"
+  workflow_dispatch:
+
+jobs:
+  safe-weekly-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Initialize and seed sample data
+        run: |
+          python copilot.py init
+          python copilot.py seed
+
+      - name: Run safe analysis pipeline (no scrape, no LLM)
+        run: python copilot.py run --no-llm --message-limit 5
+
+      - name: Upload reports (artifacts only)
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-reports
+          path: |
+            output/
+            reports/
+          if-no-files-found: ignore

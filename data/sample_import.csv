@@ -1,0 +1,3 @@
+name,headline,company,role,location,education,about,experience,skills,linkedin_url
+John Doe,Senior Data Engineer at Amazon,Amazon,Senior Data Engineer,Seattle WA,University at Buffalo — MS Computer Science,Building large-scale data pipelines. UB alumnus.,Amazon — 3 yrs,Python Spark AWS SQL,https://www.linkedin.com/in/john-doe-sample
+Jane Smith,Technical Recruiter at Microsoft,Microsoft,Technical Recruiter,Redmond WA,University of Washington,Hiring data engineers for Azure.,Microsoft — 2 yrs,Recruiting Campus Hiring,https://www.linkedin.com/in/jane-smith-sample

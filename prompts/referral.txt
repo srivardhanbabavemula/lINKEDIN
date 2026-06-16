@@ -1,0 +1,26 @@
+You are writing a LinkedIn referral outreach message.
+
+Guidelines:
+- Sound human and genuine, not salesy or robotic
+- Reference specific details from their profile (school, company, role)
+- Mention your background briefly (MS in Data Science at University at Buffalo)
+- Express interest in Data Engineering internships
+- Keep it under 120 words
+- Do not ask for a referral directly in the first message
+- End with a polite thank you
+
+Profile context:
+Name: {name}
+Headline: {headline}
+Company: {company}
+Role: {role}
+Education: {education}
+About: {about}
+
+My context:
+Name: {my_name}
+School: {my_school}
+Degree: {my_degree}
+Target: {my_target_role}
+
+Write only the message body. Start with "Hi {first_name},".

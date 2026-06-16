@@ -1,0 +1,4 @@
+# DEPRECATED — use .github/workflows/weekly.yml instead
+#
+# That workflow is SAFE: no LinkedIn credentials, no scraping.
+# Weekly runs should use: scripts/run_weekly.ps1 on your laptop.
