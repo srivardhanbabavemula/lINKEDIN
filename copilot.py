@@ -38,7 +38,7 @@ def cmd_import(args: argparse.Namespace) -> None:
 
 
 def cmd_export(args: argparse.Namespace) -> None:
-    from output.export_report import export_all, export_csv, export_markdown
+    from exporter.export_report import export_all, export_csv, export_markdown
 
     if args.format == "csv":
         export_csv()
@@ -54,7 +54,7 @@ def cmd_run(args: argparse.Namespace) -> None:
     """Safe end-to-end workflow: import/analyze/messages/export (no scrape)."""
     from analyzer.classify_profiles import analyze_all_pending
     from analyzer.generate_messages import generate_for_top_candidates
-    from output.export_report import export_all
+    from exporter.export_report import export_all
     from safety.guards import print_safety_banner
 
     print_safety_banner()

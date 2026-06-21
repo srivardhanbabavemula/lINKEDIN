@@ -70,7 +70,7 @@ def run_weekly_pipeline(
     message_limit: int = 10,
     use_llm: bool = True,
 ) -> None:
-    from output.export_report import export_all
+    from exporter.export_report import export_all
     from safety.guards import print_safety_banner
 
     print("=== LinkedIn Networking Copilot - Weekly Pipeline ===\n")
