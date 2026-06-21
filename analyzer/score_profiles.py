@@ -17,12 +17,17 @@ from analyzer.job_matcher import best_job_match
 from analyzer.recruiter_detector import detect_recruiter
 
 TARGET_ROLES: dict[str, int] = {
-    r"data engineer": 20,
-    r"data scientist": 18,
-    r"ml engineer": 18,
-    r"machine learning": 15,
-    r"analytics engineer": 15,
-    r"software engineer": 10,
+    r"intern": 22,
+    r"internship": 20,
+    r"university recruiter": 22,
+    r"campus recruiter": 22,
+    r"recruiter": 18,
+    r"talent acquisition": 16,
+    r"data engineer": 18,
+    r"data scientist": 16,
+    r"software engineer": 14,
+    r"product manager": 12,
+    r"analyst": 10,
 }
 
 HIRING_MANAGER_PATTERNS = [

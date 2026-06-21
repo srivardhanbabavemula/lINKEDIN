@@ -25,7 +25,8 @@ LINKEDIN_PASSWORD = os.getenv("LINKEDIN_PASSWORD", "")
 MY_NAME = os.getenv("MY_NAME", "Your Name")
 MY_SCHOOL = os.getenv("MY_SCHOOL", "University at Buffalo")
 MY_DEGREE = os.getenv("MY_DEGREE", "MS in Data Science")
-MY_TARGET_ROLE = os.getenv("MY_TARGET_ROLE", "Data Engineering internships")
+MY_TARGET_ROLE = os.getenv("MY_TARGET_ROLE", "internship opportunities")
+MY_INTERNSHIP_FIELD = os.getenv("MY_INTERNSHIP_FIELD", "")
 MY_LOCATION = os.getenv("MY_LOCATION", "Hyderabad")
 
 # Scoring

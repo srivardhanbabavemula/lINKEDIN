@@ -66,7 +66,8 @@ def _fallback_message(profile: dict[str, Any], first_name: str) -> str:
             f"I came across your profile and was impressed by your work as a {profile.get('role', 'professional')} at {profile.get('company', 'your company')}."
         )
     parts.append(
-        f"I'm pursuing my {MY_DEGREE} at {MY_SCHOOL} and preparing for {MY_TARGET_ROLE}. Your career path stood out to me, and I'd appreciate the opportunity to learn from your experience."
+        f"I'm a student at {MY_SCHOOL} pursuing {MY_DEGREE}, and I'm exploring {MY_TARGET_ROLE}. "
+        f"Your career path stood out to me, and I'd appreciate any advice you might share about breaking into the field."
     )
     parts.append("Thank you for your time.")
     return "\n\n".join(parts)

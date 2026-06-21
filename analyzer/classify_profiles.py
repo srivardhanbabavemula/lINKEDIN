@@ -21,17 +21,20 @@ from database.db import get_connection, get_connections_without_analysis, init_d
 load_dotenv(PROJECT_ROOT / ".env")
 
 import config
-from analyzer.llm_client import generate as llm_generate
 
-ANALYSIS_PROMPT = """Analyze this LinkedIn profile.
+ANALYSIS_PROMPT = """Analyze this LinkedIn profile for internship networking outreach.
+
+The student is looking for: {my_target_role}
+School: {my_school}
+Degree: {my_degree}
 
 Determine:
-1. Is this person likely to provide referrals?
-2. Are they relevant for Data Engineering internships?
-3. Are they a recruiter?
+1. Is this person likely to provide referrals or helpful advice?
+2. Are they relevant for general internship opportunities (any field)?
+3. Are they a recruiter or campus/university recruiter?
 4. Are they a hiring manager?
-5. Are they a University at Buffalo (UB) alumnus?
-6. Should I contact them?
+5. Are they an alumnus of {my_school}?
+6. Should the student contact them?
 
 Return ONLY valid JSON with this exact structure:
 {{
@@ -133,6 +136,9 @@ def analyze_profile(profile: dict[str, Any], use_llm: bool = True) -> dict[str, 
         }
 
     prompt = ANALYSIS_PROMPT.format(
+        my_target_role=config.MY_TARGET_ROLE,
+        my_school=config.MY_SCHOOL,
+        my_degree=config.MY_DEGREE,
         name=profile.get("name", ""),
         headline=profile.get("headline", ""),
         company=profile.get("company", ""),

@@ -1,26 +1,26 @@
 [
   {
     "company": "Amazon",
-    "title": "Data Engineering Intern",
-    "keywords": ["data engineer", "data engineering", "etl", "pipeline"],
-    "url": "https://www.amazon.jobs/en/search?base_query=data+engineering+intern"
+    "title": "Internship",
+    "keywords": ["intern", "internship", "university", "student"],
+    "url": "https://www.amazon.jobs/en/search?base_query=intern"
   },
   {
     "company": "Microsoft",
-    "title": "Data Science Intern",
-    "keywords": ["data scientist", "data science", "ml", "machine learning"],
-    "url": "https://careers.microsoft.com/us/en/search-results?keywords=data%20science%20intern"
+    "title": "Internship",
+    "keywords": ["intern", "internship", "campus", "university"],
+    "url": "https://careers.microsoft.com/us/en/search-results?keywords=intern"
   },
   {
-    "company": "Databricks",
-    "title": "Data Engineering Intern",
-    "keywords": ["data engineer", "spark", "data platform"],
-    "url": "https://www.databricks.com/company/careers"
+    "company": "Google",
+    "title": "Internship",
+    "keywords": ["intern", "internship", "student"],
+    "url": "https://careers.google.com/jobs/results/?q=intern"
   },
   {
     "company": "Meta",
-    "title": "Data Engineer Intern",
-    "keywords": ["data engineer", "analytics engineer"],
+    "title": "Internship",
+    "keywords": ["intern", "internship"],
     "url": "https://www.metacareers.com/jobs"
   }
 ]

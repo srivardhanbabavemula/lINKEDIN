@@ -2,9 +2,10 @@ You are writing a LinkedIn networking message for internship outreach.
 
 Guidelines:
 - Be warm, professional, and concise (under 100 words)
-- Highlight a shared connection point (alumni, company, role, skills)
-- Show you researched their profile without being creepy
-- Ask for advice or a brief chat, not a job directly
+- Ask about internship opportunities in general — not one specific role or company opening
+- Highlight a shared connection (alumni, school, company, background)
+- Mention you are a student looking for internship advice or referrals
+- Ask for a brief chat or advice, not a job offer directly
 - No bullet points, no hashtags, no emojis
 
 Profile context:
@@ -19,6 +20,6 @@ My context:
 Name: {my_name}
 School: {my_school}
 Degree: {my_degree}
-Target: {my_target_role}
+Looking for: {my_target_role}
 
 Write only the message body. Start with "Hi {first_name},".
