@@ -14,6 +14,17 @@ function resolvePython(projectRoot: string): string {
 
 export async function POST(request: NextRequest) {
   try {
+    if (process.env.CODESPACES === "true" || process.env.CODESPACE_NAME) {
+      return NextResponse.json(
+        {
+          error:
+            "Open in LinkedIn only works on your laptop, not in GitHub Codespaces. " +
+            "Export messages (python copilot.py export) and use Open in LinkedIn from your local machine.",
+        },
+        { status: 400 }
+      );
+    }
+
     const body = await request.json();
     const { messageId, content } = body;
 
