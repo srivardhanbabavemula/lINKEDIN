@@ -82,6 +82,8 @@ SAMPLE_PROFILES = [
 
 
 def seed(use_llm: bool = False) -> None:
+    from analyzer.generate_messages import _fallback_message
+
     init_db()
     now = utc_now()
 
@@ -93,7 +95,11 @@ def seed(use_llm: bool = False) -> None:
             upsert_analysis(conn, conn_id, analysis)
 
             if analysis.get("should_contact"):
-                content = generate_message({**profile, "id": conn_id})
+                first_name = profile.get("name", "there").split()[0]
+                if use_llm:
+                    content = generate_message({**profile, "id": conn_id})
+                else:
+                    content = _fallback_message({**profile, "id": conn_id}, first_name)
                 conn.execute(
                     """
                     INSERT INTO messages (connection_id, message_type, content, status, created_at, updated_at)

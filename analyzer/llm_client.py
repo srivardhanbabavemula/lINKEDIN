@@ -28,7 +28,7 @@ def _ollama_generate(prompt: str, temperature: float) -> str:
             "stream": False,
             "options": {"temperature": temperature},
         },
-        timeout=180,
+        timeout=15,
     )
     response.raise_for_status()
     return response.json().get("response", "").strip()
@@ -43,7 +43,7 @@ def _lmstudio_generate(prompt: str, temperature: float) -> str:
             "messages": [{"role": "user", "content": prompt}],
             "temperature": temperature,
         },
-        timeout=180,
+        timeout=15,
     )
     response.raise_for_status()
     data = response.json()
