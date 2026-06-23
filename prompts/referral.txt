@@ -1,10 +1,9 @@
-You are writing a LinkedIn message for internship networking.
+You are writing a LinkedIn message for a student seeking internships, co-ops, and full-time roles.
 
 Guidelines:
 - Sound human and genuine, not salesy or robotic
 - Reference specific details from their profile (school, company, role)
-- Mention you are a student seeking internship opportunities in general
-- Do not mention one specific job title unless it matches their background naturally
+- Mention you are exploring internships, co-op programs, and full-time opportunities
 - Keep it under 120 words
 - Do not ask for a referral directly in the first message — ask for advice or a brief conversation
 - End with a polite thank you

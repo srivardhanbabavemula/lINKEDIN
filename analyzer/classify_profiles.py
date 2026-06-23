@@ -22,15 +22,16 @@ load_dotenv(PROJECT_ROOT / ".env")
 
 import config
 
-ANALYSIS_PROMPT = """Analyze this LinkedIn profile for internship networking outreach.
+ANALYSIS_PROMPT = """Analyze this LinkedIn profile for student networking outreach.
 
 The student is looking for: {my_target_role}
+(This includes internships, co-op programs, and full-time roles.)
 School: {my_school}
 Degree: {my_degree}
 
 Determine:
 1. Is this person likely to provide referrals or helpful advice?
-2. Are they relevant for general internship opportunities (any field)?
+2. Are they relevant for internships, co-ops, or full-time opportunities?
 3. Are they a recruiter or campus/university recruiter?
 4. Are they a hiring manager?
 5. Are they an alumnus of {my_school}?

@@ -1,26 +1,26 @@
 [
   {
     "company": "Amazon",
-    "title": "Internship",
-    "keywords": ["intern", "internship", "university", "student"],
+    "title": "Intern / Co-op / New Grad",
+    "keywords": ["intern", "internship", "co-op", "coop", "university", "new grad", "early career"],
     "url": "https://www.amazon.jobs/en/search?base_query=intern"
   },
   {
     "company": "Microsoft",
-    "title": "Internship",
-    "keywords": ["intern", "internship", "campus", "university"],
+    "title": "Intern / Co-op / Full-time",
+    "keywords": ["intern", "internship", "co-op", "coop", "campus", "university", "new grad"],
     "url": "https://careers.microsoft.com/us/en/search-results?keywords=intern"
   },
   {
     "company": "Google",
-    "title": "Internship",
-    "keywords": ["intern", "internship", "student"],
+    "title": "Intern / University Graduate",
+    "keywords": ["intern", "internship", "co-op", "university", "new grad", "full time"],
     "url": "https://careers.google.com/jobs/results/?q=intern"
   },
   {
     "company": "Meta",
-    "title": "Internship",
-    "keywords": ["intern", "internship"],
+    "title": "Intern / Co-op / New Grad",
+    "keywords": ["intern", "internship", "co-op", "new grad"],
     "url": "https://www.metacareers.com/jobs"
   }
 ]
