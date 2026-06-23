@@ -15,7 +15,8 @@ SAFETY_LOG = SAFETY_DIR / "activity.json"
 # Hard caps — protect your LinkedIn account
 MAX_SCRAPE_PER_SESSION = int(getattr(config, "MAX_SCRAPE_PER_SESSION", 15))
 MAX_SCRAPE_PER_DAY = int(getattr(config, "MAX_SCRAPE_PER_DAY", 25))
-MAX_MESSAGES_PER_WEEK = int(getattr(config, "WEEKLY_MESSAGE_LIMIT", 10))
+MAX_MESSAGES_PER_SESSION = int(getattr(config, "MESSAGES_PER_SESSION", 30))
+MAX_MESSAGES_PER_WEEK = int(getattr(config, "WEEKLY_MESSAGE_LIMIT", 30))
 MIN_SCRAPE_DELAY = float(config.SCRAPE_DELAY_SECONDS)
 
 # Manual approval is mandatory — never auto-send
@@ -94,10 +95,10 @@ def record_scrape(count: int) -> None:
 
 
 def check_message_generation_allowed(count: int) -> None:
-    if count > MAX_MESSAGES_PER_WEEK:
+    if count > MAX_MESSAGES_PER_SESSION:
         raise SafetyError(
-            f"Weekly message cap is {MAX_MESSAGES_PER_WEEK}. "
-            "Focus on top-quality outreach, not volume."
+            f"Session message cap is {MAX_MESSAGES_PER_SESSION}. "
+            "Review and send this batch before building another queue."
         )
 
 
@@ -132,6 +133,7 @@ def get_safety_status() -> dict[str, Any]:
         "max_scrape_per_session": MAX_SCRAPE_PER_SESSION,
         "remaining_scrapes_today": max(0, MAX_SCRAPE_PER_DAY - day.get("scraped", 0)),
         "messages_generated_today": day.get("messages_generated", 0),
+        "max_messages_per_session": MAX_MESSAGES_PER_SESSION,
         "max_messages_per_week": MAX_MESSAGES_PER_WEEK,
         "min_scrape_delay_seconds": MIN_SCRAPE_DELAY,
         "recommended_workflow": "import_or_small_scrape -> analyze -> generate -> approve -> copy -> send manually on LinkedIn",

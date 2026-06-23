@@ -31,7 +31,8 @@ MY_LOCATION = os.getenv("MY_LOCATION", "Hyderabad")
 
 # Scoring
 MIN_CONTACT_SCORE = int(os.getenv("MIN_CONTACT_SCORE", "50"))
-WEEKLY_MESSAGE_LIMIT = int(os.getenv("WEEKLY_MESSAGE_LIMIT", "10"))
+WEEKLY_MESSAGE_LIMIT = int(os.getenv("WEEKLY_MESSAGE_LIMIT", "30"))
+MESSAGES_PER_SESSION = int(os.getenv("MESSAGES_PER_SESSION", "30"))
 
 # Safety limits — protect your LinkedIn account
 MAX_SCRAPE_PER_SESSION = int(os.getenv("MAX_SCRAPE_PER_SESSION", "15"))

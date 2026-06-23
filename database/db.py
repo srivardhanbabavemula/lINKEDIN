@@ -133,6 +133,15 @@ def init_db(db_path: Optional[Path] = None) -> Path:
             CREATE INDEX IF NOT EXISTS idx_analysis_score ON analysis(referral_score DESC);
             CREATE INDEX IF NOT EXISTS idx_outreach_status ON outreach(status);
             CREATE INDEX IF NOT EXISTS idx_messages_status ON messages(status);
+
+            CREATE TABLE IF NOT EXISTS queue_sessions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                status TEXT NOT NULL DEFAULT 'ACTIVE',
+                total_count INTEGER DEFAULT 0,
+                sent_count INTEGER DEFAULT 0,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
             """
         )
         migrate_db(conn)
@@ -145,9 +154,23 @@ def migrate_db(conn: sqlite3.Connection | None = None) -> None:
         ("analysis", "recruiter_type", "TEXT"),
         ("analysis", "alumni_tags", "TEXT"),
         ("analysis", "job_match", "TEXT"),
+        ("messages", "queue_session_id", "INTEGER"),
+        ("messages", "queue_position", "INTEGER"),
     ]
 
     def _apply(connection: sqlite3.Connection) -> None:
+        connection.executescript(
+            """
+            CREATE TABLE IF NOT EXISTS queue_sessions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                status TEXT NOT NULL DEFAULT 'ACTIVE',
+                total_count INTEGER DEFAULT 0,
+                sent_count INTEGER DEFAULT 0,
+                created_at TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            );
+            """
+        )
         for table, column, col_type in columns_to_add:
             existing = {
                 row[1]

@@ -37,10 +37,26 @@ def login(page: Page, email: str, password: str) -> None:
 def create_authenticated_context(
     headless: bool = False,
     force_login: bool = False,
+    manual: bool = False,
 ) -> tuple[Browser, BrowserContext]:
     AUTH_DIR.mkdir(parents=True, exist_ok=True)
     playwright = sync_playwright().start()
     browser = playwright.chromium.launch(headless=headless)
+
+    if manual:
+        context = browser.new_context()
+        page = context.new_page()
+        page.goto("https://www.linkedin.com/feed/", wait_until="domcontentloaded")
+        print("\n" + "=" * 60)
+        print("  MANUAL LOGIN")
+        print("  Log in to linkedin.com in the browser window.")
+        print("  (Works even if LinkedIn Desktop app is logged in separately.)")
+        print("  When you see your feed, press Enter here.")
+        print("=" * 60)
+        input()
+        context.storage_state(path=str(SESSION_FILE))
+        page.close()
+        return browser, context
 
     if SESSION_FILE.exists() and not force_login:
         context = browser.new_context(storage_state=str(SESSION_FILE))

@@ -76,15 +76,35 @@ def cmd_run(args: argparse.Namespace) -> None:
     print("  python copilot.py dashboard")
 
 
+def cmd_queue(args: argparse.Namespace) -> None:
+    from analyzer.message_queue import (
+        build_queue,
+        list_queue,
+        mark_done,
+        open_next_in_linkedin,
+    )
+
+    if args.action == "build":
+        build_queue(limit=args.limit, use_llm=args.llm, min_score=args.min_score)
+    elif args.action == "list":
+        list_queue()
+    elif args.action == "next":
+        open_next_in_linkedin()
+    elif args.action == "done":
+        mark_done(args.id)
+
+
 def cmd_login(args: argparse.Namespace) -> None:
     from safety.guards import print_safety_banner
     from scraper.login import create_authenticated_context
 
     print_safety_banner()
-    print("Login runs locally on YOUR machine only. Credentials never go to GitHub.\n")
+    print("Login runs locally on YOUR machine only.\n")
 
     browser, context = create_authenticated_context(
-        headless=args.headless, force_login=args.force
+        headless=args.headless,
+        force_login=args.force,
+        manual=args.manual,
     )
     page = context.new_page()
     page.goto("https://www.linkedin.com/feed/")
@@ -234,7 +254,16 @@ def build_parser() -> argparse.ArgumentParser:
     login = sub.add_parser("login", help="LinkedIn login (local only)")
     login.add_argument("--headless", action="store_true")
     login.add_argument("--force", action="store_true")
+    login.add_argument("--manual", action="store_true", help="Log in manually in browser (recommended)")
     login.set_defaults(func=cmd_login)
+
+    queue = sub.add_parser("queue", help="30-message approval queue")
+    queue.add_argument("action", choices=["build", "list", "next", "done"])
+    queue.add_argument("--limit", type=int, default=30)
+    queue.add_argument("--min-score", type=int, default=35)
+    queue.add_argument("--llm", action="store_true", help="Use Ollama for messages")
+    queue.add_argument("--id", type=int, default=None, help="Message id for queue done")
+    queue.set_defaults(func=cmd_queue)
 
     scrape = sub.add_parser("scrape", help="Scrape profiles (rate-limited, use sparingly)")
     scrape.add_argument("--limit", type=int, default=10)
